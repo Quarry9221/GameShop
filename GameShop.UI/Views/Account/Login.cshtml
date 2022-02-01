@@ -1,0 +1,28 @@
+﻿@model GameShop.UI.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Enter to system</h3>
+    </div>
+    <div class="panel-body">
+        <p class="lead">Please, enter to system to get admin panel:</p>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label>Login:</label>
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+            <input type="submit" value="Log in" class="btn btn-primary" />
+        }
+    </div>
+</div>

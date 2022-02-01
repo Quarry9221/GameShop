@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/Error.css" rel="stylesheet" />
+    <link href="~/Content/Menu.css" rel="stylesheet" />
+    <link href="~/Content/button.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+
+<body>
+    <div style="background-color: lightblue">
+        <div>
+            <div style="background-image: linear-gradient(to bottom, grey 0%, #6004A9 100%) " class="navbar" role="navigation">
+                <a style ="color: white"class="navbar-brand" href="https://localhost:44317/"><b>ManiaS - remember you are the best!</b></a>
+                @Html.Action("Summary", "Cart")
+            </div>
+            <div style="background-color: lightblue; text-align:center" class="row panel">
+                    <div id="categories" class="">
+                        @Html.Action("Menu", "Navigation")
+                    </div>
+                <div class="col-xs-8" style="text-align: center">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div class=".bg-secondary.bg-gradient panel-footer">
+
+                    <div class="colorbg">All right reserved Zolotko Vadym TM-92</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

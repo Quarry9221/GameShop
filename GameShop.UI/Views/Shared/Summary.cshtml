@@ -1,0 +1,42 @@
+﻿@model GameShop.Domain.Entities.Game
+<div style="height: 350px;" class="well">
+    <div style="float: left; width: 487px; height 200px;">
+        <div style="text-align:left">
+            <h3>
+                <strong>@Model.Name</strong>
+
+            </h3>
+        </div>
+
+        @if (Model.ImageData != null)
+        {
+            <div class="pull-left" style="margin-right: 10px; text-align: center">
+                <img class="img-thumbnail" width="150" height="200"
+                     src="@Url.Action("GetImage", "Game",
+                new { Model.Id })" />
+            </div>
+        }
+
+        @using (Html.BeginForm("Add", "Cart"))
+        {
+            <div class="">
+                @Html.HiddenFor(x => x.Id)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" style="margin-right: 40%; margin-bottom: 5px; font-size: 100%" class="btn pull-left btn-success" value="Add to cart" />
+            </div>
+            <div>
+                <span style="margin-right: 45%; margin-bottom: 5px; font-size: 100%" class="pull-left label label-danger">@Model.Price.ToString("# dollars")</span>
+            </div>
+        }
+
+        <span style="background-color:lightpink; font-size: 150%" class="pull-left label label-success">@Model.Genre</span>
+    </div>
+
+    <div style="float: right; text-align:right; width: 200px; height: 300px;">
+        <div><span class="lead"><b>Студія розробки: @Model.Developer</b></span></div>
+        <p style="width: 300px" class="pull-right">
+            <span>@Model.Description</span>
+        </p>
+    </div>
+
+</div>

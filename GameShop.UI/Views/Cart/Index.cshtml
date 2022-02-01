@@ -1,0 +1,56 @@
+﻿@model GameShop.UI.Models.CartIndexViewModel
+@{
+    ViewBag.Title = "ManiaS: your cart";
+    Layout = "~/Views/Shared/_CartLayout.cshtml";
+}
+
+<h2><b>Your Cart</b></h2>
+<div style="margin-left: 300px; width: 80%;">
+    <table style="width:80%;text-align:right;background-color: antiquewhite; border-radius: 3px;" class="table">
+        <thead>
+            <tr style="border: 2px black groove">
+                <th style="border-bottom: 0"><b>Count</b></th>
+                <th style="border-bottom: 0">Game</th>
+                <th style="border-bottom: 0" class="text-right">Price</th>
+                <th style="border-bottom: 0" class="text-right">Total price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.Cart.Lines)
+            {
+                <tr style="border: black 2px groove;border: 2px black groove">
+                    <td class="border-cart text-center"><b>@line.Count</b></td>
+                    <td class="border-cart text-left"><b>@line.Game.Name</b></td>
+                    <td class=" border-carttext-right"><b>@line.Game.Price.ToString("# dollars")</b></td>
+                    <td class=" border-carttext-right">
+                        <b>@((line.Count * line.Game.Price).ToString("# dollars"))</b>
+                    </td>
+                    <td>
+                        <b>
+                            @using (Html.BeginForm("Remove", "Cart"))
+                            {
+                                @Html.Hidden("Id", line.Game.Id)
+                                @Html.HiddenFor(x => x.ReturnUrl)
+                                <input style="border-radius: 24px" ; class="btn btn-l btn-zlo" type="submit" value="Delete" />
+                            }
+                        </b>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot style="border: 2px black groove">
+            <tr>
+                <td colspan="3" class="text-right"><b>Total:</b></td>
+                <td class="text-right"> 
+                    <b>
+                        @Model.Cart.CalculateValue().ToString("# dollars")
+                    </b>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div style="width: 100%" class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Countinue shop</a>
+    @Html.ActionLink("Checkout", "Checkout", null, new { @class = "btn btn-primary" })
+</div>

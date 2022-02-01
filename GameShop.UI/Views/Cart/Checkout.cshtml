@@ -1,0 +1,45 @@
+﻿@model GameShop.Domain.Entities.ShippingDetails
+
+@{
+    ViewBag.Title = "ManiaS = form of deliver";
+    Layout = "~/Views/Shared/_CartLayout.cshtml";
+}
+
+
+
+
+@using (Html.BeginForm())
+{
+    <div style="width: 30%; margin-left: 10px">
+        <h2>Order now!</h2>
+        <p>Please input your data</p>
+        @Html.ValidationSummary()
+        <h3>Data</h3>
+        <div class="">
+            <label>Your name:</label>
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        </div>
+
+        <h3>Adress to deliver</h3>
+        <div class="form-group">
+            <label>First adress:</label>
+            @Html.TextBoxFor(x => x.Line1, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Second adress:</label>
+            @Html.TextBoxFor(x => x.Line2, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>City:</label>
+            @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Country:</label>
+            @Html.TextBoxFor(x => x.Country, new { @class = "form-control" })
+        </div>
+
+        <div class="text-center">
+            <input class="btn btn-primary" type="submit" value="Submit Order" />
+        </div>
+    </div>
+}

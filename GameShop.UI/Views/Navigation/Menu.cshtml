@@ -1,0 +1,23 @@
+﻿@model IEnumerable<string>
+
+<div  style ="background-color: lightblue" >
+    <div style="text-align: left; padding-left: 20px">
+        @Html.ActionLink("Home", "List", "Game", null,
+            new { @class = "btn btn-dobro btn-lg" })
+    </div>
+
+    @foreach (var link in Model)
+    {
+        @Html.RouteLink(link, new
+   {
+       controller = "Game",
+       action = "List",
+       genre = link,
+       page = 1
+   }, new
+   {
+       @class = "btn-marg btn btn-warning btn-active btn-lg"
+            + (link == ViewBag.SelectedGenre ? " btn-down" : "")
+   })
+    }
+</div>

@@ -1,0 +1,19 @@
+﻿@using GameShop.UI.Models
+@using GameShop.UI.HTML
+@model GamesListViewModel
+
+@{
+    ViewBag.Title = "Gameshop";
+}
+<div  style ="background-color: lightblue">
+    @foreach (var p in @Model.Games)
+    {
+    <div>
+        @Html.Partial("Summary", p)
+    </div>
+    }
+
+    <div class="btn-group pull-right">
+        @Html.PageLinks(Model.PageInfo, x => Url.Action("List", new { page = x, genre = Model.CurrentGenre }))
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿
+foot {
+    padding: 10px 15px;
+    background-color: mediumpurple !important;
+    border-top: 1px solid #dddddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.btn-vadym {
+    display: block;
+    width: 30%;
+    padding-right: 0;
+    padding-left: 0;
+}
+.btn-marg
+{
+    margin: 10px 10px;
+}
+.panelka {
+    width: 102px;
+    height: 25px;
+    text-align: center;
+    padding-top: 5px;
+    padding-left: 36px;
+}
+.block
+{
+    width: 50px;
+    height: 60px;
+}
+.blck-cart {
+    width: 80%;
+    margin: 0;
+    float: right;
+}
